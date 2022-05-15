@@ -127,12 +127,8 @@ public class Registration extends AppCompatActivity {
                     if (u.Email.equals(getIntent().getStringExtra("email"))){
                     }
                 }
-            }
-//отмена при неудачной регистрации
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-        });*/
-
   /*  private void init(){
         edtN = findViewById(R.id.edtN);
         edtSN = findViewById(R.id.edtSN);
