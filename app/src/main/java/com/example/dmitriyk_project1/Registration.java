@@ -26,7 +26,7 @@ public class Registration extends AppCompatActivity {
     private EditText edtAGE;
     private EditText edtVES;
 
-    private Button btnAcReg;
+    private Button btnAcReg, btBack;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDataBase;
@@ -41,11 +41,21 @@ public class Registration extends AppCompatActivity {
         edtVES = findViewById(R.id.edtVES);
         mAuth = FirebaseAuth.getInstance();
         edtN = findViewById(R.id.edtN);
+
         edtSN = findViewById(R.id.edtSN);
         edtEm = findViewById(R.id.edtEm);
         edtP = findViewById(R.id.edtP);
         mDataBase = FirebaseDatabase.getInstance().getReference(user);
         btnAcReg = findViewById(R.id.btnAcReg);
+        btBack = findViewById(R.id. btBack);
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              Intent intent = new Intent(Registration.this, LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         btnAcReg.setOnClickListener(new View.OnClickListener() {
             @Override

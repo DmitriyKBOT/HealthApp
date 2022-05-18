@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DmitriyK_project1">
         <activity
+            android:name=".TodolistEighteen"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -20,7 +23,6 @@
         </activity>
         <activity android:name=".Registration" />
         <activity android:name=".Profile" />
-
     </application>
 
 </manifest>
