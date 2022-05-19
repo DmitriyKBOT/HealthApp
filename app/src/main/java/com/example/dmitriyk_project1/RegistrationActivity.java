@@ -37,7 +37,7 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedIntanceState) {
         super.onCreate(savedIntanceState);
-        setContentView(R.layout.registration_main);
+        setContentView(R.layout.activity_registration);
         //привязываем кнопки
         edtAGE = findViewById(R.id.edtAGE);
         edtVES = findViewById(R.id.edtVES);
@@ -62,7 +62,7 @@ public class RegistrationActivity extends AppCompatActivity {
         btnAcReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = mDataBase.getKey();
+                String id = mDataBase.push().getKey();
                 String Name = edtN.getText().toString();
                 String SecName = edtSN.getText().toString();
                 String AGE = edtAGE.getText().toString();
@@ -84,7 +84,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                mDataBase.child(id).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                mDataBase.child(newUser.id).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){

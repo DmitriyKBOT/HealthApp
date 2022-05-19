@@ -1,40 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="match_parent"
-        android:layout_height="237dp"
-        android:scaleType="fitStart"
-        android:scaleY="2.5"
-        app:srcCompat="@drawable/phonprofile" />
+    tools:context=".ProfileActivity"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="230dp"
+        android:background="@drawable/phonprofile"
         android:orientation="vertical">
-
-        <View
-            android:id="@+id/view5"
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
 
         <ImageView
             android:id="@+id/imVA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:src="@tools:sample/avatars"
-            />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="15dp" />
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
 
         <TextView
             android:id="@+id/txtVN"
@@ -43,17 +28,21 @@
             android:gravity="center_horizontal"
             android:text="TextView"
             android:textColor="#FFFFFF"
-            android:textSize="40dp" />
+            android:textSize="40dp"
+            android:layout_gravity="bottom"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <View
-                android:id="@+id/view4"
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
 
             <TextView
                 android:id="@+id/txtVDO"
@@ -62,7 +51,8 @@
                 android:gravity="center_horizontal"
                 android:text="Вам нужно сделать"
                 android:textColor="#E33767"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:layout_marginTop="20dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recVList"
@@ -73,4 +63,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -2,6 +2,7 @@ package com.example.dmitriyk_project1;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,19 +28,23 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_main);
+        setContentView(R.layout.activity_profile);
         txtVN = findViewById(R.id.txtVN);
         txtVDO = findViewById(R.id.txtVDO);
         imVA = findViewById(R.id.imVA);
         recyclerView = findViewById(R.id.recVList);
         user = (User) getIntent().getSerializableExtra("User");
+        txtVN.setText(user.Name);
+        Log.e("sfsdf",  user.tasks.size() + "");
         adapter = new TodolistAdapter(this, user.tasks, new TodolistAdapter.OnStateClickListener() {
             @Override
             public void OnClick(Task task) {
 
             }
         });
+        Log.e("ddddddddddddddddddd", adapter.getItemCount() + "");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+        Log.e("dddddddddddssssssssdddd", adapter.getItemCount() + "");
     }
 }

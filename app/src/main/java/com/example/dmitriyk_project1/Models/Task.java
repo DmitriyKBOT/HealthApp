@@ -1,6 +1,8 @@
 package com.example.dmitriyk_project1.Models;
 
-public class Task {
+import java.io.Serializable;
+
+public class Task implements Serializable  {
     public String TextTask;
     public int total;
     public int complete;
