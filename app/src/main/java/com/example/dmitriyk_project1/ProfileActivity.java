@@ -41,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void OnClick(Task task) {
 
             }
-        });
+        }, user);
         Log.e("ddddddddddddddddddd", adapter.getItemCount() + "");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
