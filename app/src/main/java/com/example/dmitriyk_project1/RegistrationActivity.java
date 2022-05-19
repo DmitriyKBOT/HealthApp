@@ -68,8 +68,15 @@ public class RegistrationActivity extends AppCompatActivity {
                 String AGE = edtAGE.getText().toString();
                 String VES = edtVES.getText().toString();
                 String Email = edtEm.getText().toString();
-                //String Pass = edtP.getText().toString();
-                User newUser = new User(id, Name, SecName, AGE, VES, Email,new ArrayList<>());
+
+                // тестовый список
+                ArrayList<com.example.dmitriyk_project1.Models.Task> tasks = new ArrayList<>();
+                tasks.add(new com.example.dmitriyk_project1.Models.Task("example text 1", 10, 4));
+                tasks.add(new com.example.dmitriyk_project1.Models.Task("example text 2", 20, 5));
+                tasks.add(new com.example.dmitriyk_project1.Models.Task("example text 3", 30, 0));
+
+
+                User newUser = new User(id, Name, SecName, AGE, VES, Email, tasks);
                 if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(SecName) && !TextUtils.isEmpty(SecName) && !TextUtils.isEmpty(AGE) && !TextUtils.isEmpty(VES) && !TextUtils.isEmpty(Email)) {
                     mDataBase = FirebaseDatabase.getInstance().getReference(user);
 
