@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class Registration extends AppCompatActivity {
     private EditText edtN;
     private EditText edtSN;
@@ -67,7 +69,7 @@ public class Registration extends AppCompatActivity {
                 String VES = edtVES.getText().toString();
                 String Email = edtEm.getText().toString();
                 //String Pass = edtP.getText().toString();
-                User newUser = new User(id, Name, SecName, AGE, VES, Email);
+                User newUser = new User(id, Name, SecName, AGE, VES, Email,new ArrayList<>());
                 if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(SecName) && !TextUtils.isEmpty(SecName) && !TextUtils.isEmpty(AGE) && !TextUtils.isEmpty(VES) && !TextUtils.isEmpty(Email)) {
                     mDataBase = FirebaseDatabase.getInstance().getReference(user);
 

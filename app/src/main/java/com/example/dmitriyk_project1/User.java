@@ -1,16 +1,25 @@
 package com.example.dmitriyk_project1;
 
-public class User {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class User implements Serializable {
     //занесение данных в базу данных
     public String id ,Name, SecName,AGE, VES, Email;
 
-    public User(String id, String name, String secName, String AGE, String VES, String Email) {
+    public ArrayList<Task>tasks;
+
+    public User(String id, String name, String secName, String AGE, String VES, String email, ArrayList<Task> tasks) {
         this.id = id;
-        this.Name = name;
-        this.SecName = secName;
+        Name = name;
+        SecName = secName;
         this.AGE = AGE;
         this.VES = VES;
-        this.Email = Email;
+        Email = email;
+        this.tasks = tasks;
+    }
+
+    public User() {
     }
 }
 

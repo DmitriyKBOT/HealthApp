@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,13 +48,24 @@ public class TodolistAdapter extends RecyclerView.Adapter<TodolistAdapter.TodoHo
     }
 
     public class TodoHolder    extends RecyclerView.ViewHolder{
-        private TextView txtM;
+        private TextView tvData;
+        private CheckBox checkBox;
+        private TextView progress;
         public TodoHolder(@NonNull View itemView) {
             super(itemView);
-            txtM = itemView.findViewById(R.id.txtV4);
+            tvData = itemView.findViewById(R.id.tvDescr);
+            checkBox = itemView.findViewById(R.id.cbBox);
+            progress = itemView.findViewById(R.id.tvPrice);
         }
         public void bind(int position){
-            txtM.setText(tasks.get(position).TextTask);
+            Task t = tasks.get(position);
+            tvData.setText(t.TextTask);
+            progress.setText(t.complete + "/" + t.total );
+            if(t.complete == t.total)
+                checkBox.setChecked(true);
+            else{
+                checkBox.setChecked(false);
+            }
 
         }
     }
