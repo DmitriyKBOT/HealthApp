@@ -1,4 +1,4 @@
-package com.example.dmitriyk_project1;
+package com.example.dmitriyk_project1.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,8 +8,10 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.dmitriyk_project1.Models.Task;
+import com.example.dmitriyk_project1.R;
 
 import java.util.ArrayList;
 

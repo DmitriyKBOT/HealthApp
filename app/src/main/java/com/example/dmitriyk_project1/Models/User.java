@@ -1,4 +1,6 @@
-package com.example.dmitriyk_project1;
+package com.example.dmitriyk_project1.Models;
+
+import com.example.dmitriyk_project1.Models.Task;
 
 import java.io.Serializable;
 import java.util.ArrayList;

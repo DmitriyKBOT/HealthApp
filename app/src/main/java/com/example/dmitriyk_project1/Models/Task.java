@@ -1,4 +1,4 @@
-package com.example.dmitriyk_project1;
+package com.example.dmitriyk_project1.Models;
 
 public class Task {
     public String TextTask;

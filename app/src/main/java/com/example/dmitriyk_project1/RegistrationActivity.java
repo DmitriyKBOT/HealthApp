@@ -10,17 +10,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.dmitriyk_project1.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class Registration extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
     private EditText edtN;
     private EditText edtSN;
     private EditText edtEm;
@@ -53,8 +53,8 @@ public class Registration extends AppCompatActivity {
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Intent intent = new Intent(Registration.this, LoginActivity.class);
-                startActivity(intent);
+              Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+              startActivity(intent);
 
             }
         });
@@ -73,29 +73,29 @@ public class Registration extends AppCompatActivity {
                 if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(SecName) && !TextUtils.isEmpty(SecName) && !TextUtils.isEmpty(AGE) && !TextUtils.isEmpty(VES) && !TextUtils.isEmpty(Email)) {
                     mDataBase = FirebaseDatabase.getInstance().getReference(user);
 
-                    mAuth.createUserWithEmailAndPassword(edtEm.getText().toString(), edtP.getText().toString())
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        mDataBase.push().setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if(task.isSuccessful()){
-                                                    Intent intent = new Intent(Registration.this, LoginActivity.class);
-                                                    startActivity(intent);
-                                                }
-
-                                            }
-                                        });
-
+                    mAuth.createUserWithEmailAndPassword(edtEm.getText().toString(), edtP.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                mDataBase.child(id).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                                            startActivity(intent);
+                                        }
                                     }
-                                    //если программе не удаётс зарегистрировать пользователя
-                                    else {
-                                        Toast.makeText(Registration.this, "Ошибка при регистрации", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
+                                });
+                            }
+                            //если программе не удаётс зарегистрировать пользователя
+                            else {
+                                Toast.makeText(RegistrationActivity.this, "Ошибка при регистрации", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(RegistrationActivity.this, "Введите все данные", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -104,7 +104,7 @@ public class Registration extends AppCompatActivity {
 }
 
                 /*if (edtN.getText().toString().isEmpty() && edtSN.getText().toString().isEmpty() && edtEm.getText().toString().isEmpty() && edtP.getText().toString().isEmpty()) {
-                    Toast.makeText(Registration.this, "Заполните все поля!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this, "Заполните все поля!", Toast.LENGTH_SHORT).show();
                     mDataBase = FirebaseDatabase.getInstance().getReference(user);
                     mDataBase.push().setValue(newUser);
                 }
@@ -115,13 +115,13 @@ public class Registration extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        Intent intent = new Intent(Registration.this, LoginActivity.class);
+                                        Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                                         startActivity(intent);
 
                                     }
                                     //если программе не удаётс зарегистрировать пользователя
                                     else {
-                                        Toast.makeText(Registration.this, "Ошибка при регистрации", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegistrationActivity.this, "Ошибка при регистрации", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });

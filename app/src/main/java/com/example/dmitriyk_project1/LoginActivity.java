@@ -10,10 +10,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.dmitriyk_project1.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -41,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //перемещение на новую активность, тоесть на регистрацию
-                Intent intent = new Intent(LoginActivity.this, Registration.class);
+                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
             }
         });
@@ -59,8 +64,26 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
-                                Intent intent = new Intent(LoginActivity.this, Profile.class);
-                                startActivity(intent);
+                                FirebaseDatabase.getInstance().getReference("User").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for (DataSnapshot s : snapshot.getChildren()) {
+                                            User u = s.getValue(User.class);
+                                            assert u != null;
+                                            if (u.Email.equals(edTEma.getText().toString())){
+                                                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                                intent.putExtra("User", u);
+                                                startActivity(intent);
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        Toast.makeText(LoginActivity.this, "Данные не найдены", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }else{
                                 Toast.makeText(LoginActivity.this, "You have some errors", Toast.LENGTH_SHORT).show();
                             }

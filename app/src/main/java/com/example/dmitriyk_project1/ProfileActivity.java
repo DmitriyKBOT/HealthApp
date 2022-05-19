@@ -10,9 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dmitriyk_project1.Adapters.TodolistAdapter;
+import com.example.dmitriyk_project1.Models.Task;
+import com.example.dmitriyk_project1.Models.User;
+
 import java.util.ArrayList;
 
-public class Profile extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
     private TextView txtVN;
     private TextView txtVDO;
     private ImageView imVA;
