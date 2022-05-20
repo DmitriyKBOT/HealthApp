@@ -23,6 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView imVA;
     private RecyclerView recyclerView;
     private TodolistAdapter adapter;
+    //лист с задачами
     private ArrayList<Task> tasks = new ArrayList<>();
     private User user;
     @Override
